@@ -170,6 +170,7 @@ public class HomeActivity extends AppCompatActivity
                         cat = jObj.getString("category");
                         views = jObj.getInt("views");
 
+
                         if (privacy.equals("Anonymous"))
                             u = "Anonymous";
                         else
@@ -177,7 +178,7 @@ public class HomeActivity extends AppCompatActivity
 
 
                         if(cat.equals("Corrupt")){
-                            stories.add(new StoryBean(0,sid,title,dep,pl,description,img,aud,vid,views,u,privacy));
+                            stories.add(new StoryBean(0,sid,title,dep,pl,description,img,aud,vid,views,u,privacy,null,0));
                         }
 
                     }

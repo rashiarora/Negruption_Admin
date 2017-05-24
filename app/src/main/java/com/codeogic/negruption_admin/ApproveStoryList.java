@@ -47,16 +47,15 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
         progressDialog.show();
         stories = new ArrayList<>();
 
-        StringRequest request = new StringRequest(Request.Method.GET, Util.RETRIEVE_STORY, new Response.Listener<String>() {
+        StringRequest request = new StringRequest(Request.Method.GET, Util.RETRIEVE_APPROVAL_STORY, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("stories");
 
-                    int  sid=0,views=0;
-                    String username="",title="",description="",privacy="",u="Anonymous",category ="";
-
+                    int  sid=0,views =0,status = 0;
+                    String username="",title="",description="",privacy="",dep = " ",pl = " ",u = "", img = " ", aud = " ", vid = " ", cat = " ";
                     for(int i=0;i<jsonArray.length();i++) {
                         JSONObject jObj = jsonArray.getJSONObject(i);
 
@@ -64,20 +63,26 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
                         sid = jObj.getInt("storyId");
                         title = jObj.getString("storyTitle");
                         description = jObj.getString("storyDesc");
+                        dep = jObj.getString("department");
+                        pl = jObj.getString("place");
                         privacy = jObj.getString("privacy");
-                        category = jObj.getString("category");
+                        img = jObj.getString("imageProof");
+                        aud = jObj.getString("audioProof");
+                        vid = jObj.getString("videoProof");
+                        cat = jObj.getString("category");
                         views = jObj.getInt("views");
+                        status = jObj.getInt("status");
+
+                        if (privacy.equals("Anonymous"))
+                            u = "Anonymous";
+                        else
+                            u = username;
 
 
 
-                            if (privacy.equals("Anonymous")) {
-                                stories.add(new StoryBean(0, sid, title, null, null, description, null, null, null,views,u,privacy));
-                            } else {
-                                Log.i("name", username);
-                                stories.add(new StoryBean(0, sid, title, null, null, description, null, null, null,views,username,privacy));
-                            }
+                            stories.add(new StoryBean(0,sid,title,dep,pl,description,img,aud,vid,views,u,null,cat,status));
 
-                        }
+                    }
 
                     adapter = new ApproveAdapter(ApproveStoryList.this,R.layout.approve_list_item,stories);
 

@@ -14,8 +14,14 @@ public class Util {
 
     public static final String LOGIN_ADMIN = "http://codeogic.esy.es/negruption/login_admin.php";
 
-    public static final String UPDATE_VIEWS = "http://codeogic.esy.es/negruption/update_views.php";
-
     public static final String RETRIEVE_STORY = "http://codeogic.esy.es/negruption/retrieve_story.php";
+
+    public static final String APPROVE_STORY = "http://codeogic.esy.es/negruption/approve_story.php";
+
+    public static final String RETRIEVE_APPROVAL_STORY = "http://codeogic.esy.es/negruption/retrieve_approval_story.php";
+
+    public static final String REJECT_STORY = "http://codeogic.esy.es/negruption/delete_stories.php";
+
+
 
 }

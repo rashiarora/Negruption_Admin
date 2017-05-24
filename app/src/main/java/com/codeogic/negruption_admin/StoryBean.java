@@ -19,11 +19,13 @@ public class StoryBean implements Serializable {
     int views;
     String username;
     String privacy;
+    String category;
+    int status;
 
     public StoryBean() {
     }
 
-    public StoryBean(int userId, int storyId, String storyTitle, String department, String place, String storyDesc, String imageProof, String audioProof, String videoProof, int views, String username, String privacy) {
+    public StoryBean(int userId, int storyId, String storyTitle, String department, String place, String storyDesc, String imageProof, String audioProof, String videoProof, int views, String username, String privacy, String category, int status) {
         UserId = userId;
         this.storyId = storyId;
         this.storyTitle = storyTitle;
@@ -36,7 +38,10 @@ public class StoryBean implements Serializable {
         this.views = views;
         this.username = username;
         this.privacy = privacy;
+        this.category = category;
+        this.status = status;
     }
+
 
     public int getUserId() {
         return UserId;
@@ -60,6 +65,22 @@ public class StoryBean implements Serializable {
 
     public void setStoryTitle(String storyTitle) {
         this.storyTitle = storyTitle;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getDepartment() {
@@ -149,6 +170,8 @@ public class StoryBean implements Serializable {
                 ", views=" + views +
                 ", username='" + username + '\'' +
                 ", privacy='" + privacy + '\'' +
+                ", category='" + category + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

@@ -16,9 +16,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -67,6 +79,10 @@ public class ApproveStoryActivity extends AppCompatActivity  {
 
     ProgressDialog progressDialog;
 
+    RequestQueue requestQueue;
+
+    StoryBean story;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,7 +90,7 @@ public class ApproveStoryActivity extends AppCompatActivity  {
         ButterKnife.inject(this);
 
         Intent rcv = getIntent();
-        StoryBean story = (StoryBean)rcv.getSerializableExtra("keyApproveStory");
+        story = (StoryBean)rcv.getSerializableExtra("keyApproveStory");
 
         txtUserName.setText(story.getUsername());
         txtStoryTitle.setText(story.getStoryTitle());
@@ -85,6 +101,7 @@ public class ApproveStoryActivity extends AppCompatActivity  {
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Loading...");
+        requestQueue = Volley.newRequestQueue(this);
 
 
 
@@ -125,6 +142,18 @@ public class ApproveStoryActivity extends AppCompatActivity  {
             progressDialog.dismiss();
 
         }
+
+        if (story.getCategory().equals("Honest")){
+            imageView.setVisibility(View.GONE);
+            btnPlay.setVisibility(View.GONE);
+            btnPause.setVisibility(View.GONE);
+            btnStop.setVisibility(View.GONE);
+            videoView.setVisibility(View.GONE);
+            videoPlay.setVisibility(View.GONE);
+
+            progressDialog.dismiss();
+        }
+
     }
 
     public void btnVideoPlay(View view){
@@ -173,10 +202,115 @@ public class ApproveStoryActivity extends AppCompatActivity  {
     }
 
     void acceptStory(){
+        progressDialog.show();
+        StringRequest request = new StringRequest(Request.Method.POST, Util.APPROVE_STORY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    JSONObject jsonObject = new JSONObject(response);
+                    int success = jsonObject.getInt("success");
+                    String message = jsonObject.getString("message");
+
+                    if(success == 1){
+
+                        Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(ApproveStoryActivity.this,ApproveStoryList.class);
+                        startActivity(i);
+                         finish();
+
+                    }else{
+                         Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
+                    }
+                     progressDialog.dismiss();
+                }catch (Exception e){
+                    e.printStackTrace();
+
+                    progressDialog.dismiss();
+                    Toast.makeText(ApproveStoryActivity.this,"Some Exception"+e,Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(ApproveStoryActivity.this,"Volley Error"+error.getMessage(),Toast.LENGTH_LONG).show();
+
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> map = new HashMap<>();
+                map.put("sid",String.valueOf(story.getStoryId()));
+
+                return map;
+            }
+        };
+        requestQueue.add(request);request.setRetryPolicy(new DefaultRetryPolicy(50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(request);
 
     }
 
+
+
     void rejectStory(){
+
+        progressDialog.show();
+        StringRequest request = new StringRequest(Request.Method.POST, Util.REJECT_STORY, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try{
+                    JSONObject jsonObject = new JSONObject(response);
+                    int success = jsonObject.getInt("success");
+                    String message = jsonObject.getString("message");
+
+                    if(success == 1){
+
+                        Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
+                       /* Intent i = new Intent(ApproveStoryActivity.this,ApproveStoryList.class);
+                        startActivity(i);
+                        finish();
+*/
+                    }else{
+                        Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
+                    }
+                    progressDialog.dismiss();
+                }catch (Exception e){
+                    e.printStackTrace();
+
+                    progressDialog.dismiss();
+                    Toast.makeText(ApproveStoryActivity.this,"Some Exception"+e,Toast.LENGTH_LONG).show();
+                }
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(ApproveStoryActivity.this,"Volley Error"+error.getMessage(),Toast.LENGTH_LONG).show();
+
+            }
+        })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String,String> map = new HashMap<>();
+                map.put("storyId",String.valueOf(story.getStoryId()));
+
+                return map;
+            }
+        };
+        requestQueue.add(request);request.setRetryPolicy(new DefaultRetryPolicy(50000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(request);
 
     }
 }
