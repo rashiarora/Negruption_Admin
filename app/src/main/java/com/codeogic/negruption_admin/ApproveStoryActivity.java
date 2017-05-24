@@ -23,40 +23,45 @@ import java.io.IOException;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class StoryActivity extends AppCompatActivity {
-    @InjectView(R.id.textViewsName)
+public class ApproveStoryActivity extends AppCompatActivity  {
+    @InjectView(R.id.textViewsName_approve)
     TextView txtUserName;
 
-    @InjectView(R.id.textViewsStoryTitle)
+    @InjectView(R.id.textViewsStoryTitle_approve)
     TextView txtStoryTitle;
 
-    @InjectView(R.id.textViewsStoryDesc)
+    @InjectView(R.id.textViewsStoryDesc_approve)
     TextView txtStoryDesc;
 
-    @InjectView(R.id.textViewsDepartment)
+    @InjectView(R.id.textViewsDepartment_approve)
     TextView txtDepartment;
 
-    @InjectView(R.id.textViewsPlace)
+    @InjectView(R.id.textViewsPlace_approve)
     TextView txtPlace;
 
-    @InjectView(R.id.sImageView)
+    @InjectView(R.id.sImageView_approve)
     ImageView imageView;
 
-    @InjectView(R.id.btnsPlay)
+    @InjectView(R.id.btnsPlay_approve)
     Button btnPlay;
 
-    @InjectView(R.id.btnsPause)
+    @InjectView(R.id.btnsPause_approve)
     Button btnPause;
 
-    @InjectView(R.id.btnsStop)
+    @InjectView(R.id.btnsStop_approve)
     Button btnStop;
 
-    @InjectView(R.id.sVideoView)
+    @InjectView(R.id.sVideoView_approve)
     VideoView videoView;
 
-    @InjectView(R.id.btnVideoPlay)
+    @InjectView(R.id.btnVideoPlay_approve)
     ImageButton videoPlay;
 
+    @InjectView(R.id.btnAccept)
+            Button btnAccept;
+
+    @InjectView(R.id.btnReject)
+            Button btnReject;
 
     MediaPlayer mediaPlayer;
 
@@ -65,11 +70,11 @@ public class StoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_story);
+        setContentView(R.layout.activity_approve_story);
         ButterKnife.inject(this);
 
         Intent rcv = getIntent();
-        StoryBean story = (StoryBean)rcv.getSerializableExtra("keyStory");
+        StoryBean story = (StoryBean)rcv.getSerializableExtra("keyApproveStory");
 
         txtUserName.setText(story.getUsername());
         txtStoryTitle.setText(story.getStoryTitle());
@@ -86,7 +91,7 @@ public class StoryActivity extends AppCompatActivity {
         progressDialog.show();
 
 
-        Log.i("info",story.toString());
+        Log.i("info_approve",story.toString());
         Toast.makeText(this,story.getImageProof() + story.getAudioProof() + story.getVideoProof(),Toast.LENGTH_LONG).show();
 
 
@@ -156,5 +161,22 @@ public class StoryActivity extends AppCompatActivity {
             videoView.stopPlayback();
             videoView = null;
         }
+    }
+
+    public void clickAccept(View view){
+        acceptStory();
+
+    }
+
+    public void clickReject(View view){
+        rejectStory();
+    }
+
+    void acceptStory(){
+
+    }
+
+    void rejectStory(){
+
     }
 }

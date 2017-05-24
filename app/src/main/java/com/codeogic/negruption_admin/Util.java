@@ -16,4 +16,6 @@ public class Util {
 
     public static final String UPDATE_VIEWS = "http://codeogic.esy.es/negruption/update_views.php";
 
+    public static final String RETRIEVE_STORY = "http://codeogic.esy.es/negruption/retrieve_story.php";
+
 }

@@ -217,9 +217,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                     boolean WritePermission = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                     boolean ReadPermission = grantResults[1] == PackageManager.PERMISSION_GRANTED;
-                    boolean RecordPermission = grantResults[2] == PackageManager.PERMISSION_GRANTED;
 
-                    if (WritePermission && RecordPermission && ReadPermission) {
+
+                    if (WritePermission && ReadPermission) {
 
                         Toast.makeText(LoginActivity.this, "Permissions Granted", Toast.LENGTH_LONG).show();
                     }
@@ -258,9 +258,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         int result = ContextCompat.checkSelfPermission(this, WRITE_EXTERNAL_STORAGE);
         int result1 = ContextCompat.checkSelfPermission(this, READ_EXTERNAL_STORAGE);
-        int result2=ContextCompat.checkSelfPermission(this,RECORD_AUDIO);
 
-        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED && result2==PackageManager.PERMISSION_GRANTED;
+
+        return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED ;
     }
 
     void loginIntoCloud(){
