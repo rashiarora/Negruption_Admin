@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.codeogic.negruption_admin.LoginActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/loginlogo1"
+        android:layout_gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Challenge The Corruption"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:fontFamily="monospace"
+        android:layout_gravity="center"        />
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="  Username"
+        android:background="@android:drawable/dialog_holo_light_frame"
+        android:inputType="textPersonName"
+        android:id="@+id/loginUsername"
+        android:layout_marginTop="40dp"
+        />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint=" Password"
+        android:background="@android:drawable/dialog_holo_light_frame"
+
+        android:inputType="textPassword"
+        android:id="@+id/loginPassword"
+        android:layout_marginTop="20dp"
+        />
+
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+
+        android:layout_marginTop="55dp"
+        android:text="Login" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New User ?"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="R e g i s t e r"
+        android:id="@+id/btnRegister"
+        android:layout_marginTop="1dp"
+
+        />
+
+
+</LinearLayout>
