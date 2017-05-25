@@ -20,7 +20,7 @@ public class Util {
 
     public static final String RETRIEVE_APPROVAL_STORY = "http://codeogic.esy.es/negruption/retrieve_approval_story.php";
 
-    public static final String REJECT_STORY = "http://codeogic.esy.es/negruption/delete_stories.php";
+    public static final String REJECT_STORY = "http://codeogic.esy.es/negruption/reject_story.php";
 
 
 

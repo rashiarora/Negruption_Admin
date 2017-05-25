@@ -176,10 +176,8 @@ public class HomeActivity extends AppCompatActivity
                         else
                             u = username;
 
+                            stories.add(new StoryBean(0,sid,title,dep,pl,description,img,aud,vid,views,u,privacy,cat,0));
 
-                        if(cat.equals("Corrupt")){
-                            stories.add(new StoryBean(0,sid,title,dep,pl,description,img,aud,vid,views,u,privacy,null,0));
-                        }
 
                     }
 

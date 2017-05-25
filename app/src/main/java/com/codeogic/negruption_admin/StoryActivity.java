@@ -120,6 +120,17 @@ public class StoryActivity extends AppCompatActivity {
             progressDialog.dismiss();
 
         }
+
+        if (story.getCategory().equals("Honest")){
+            imageView.setVisibility(View.GONE);
+            btnPlay.setVisibility(View.GONE);
+            btnPause.setVisibility(View.GONE);
+            btnStop.setVisibility(View.GONE);
+            videoView.setVisibility(View.GONE);
+            videoPlay.setVisibility(View.GONE);
+
+            progressDialog.dismiss();
+        }
     }
 
     public void btnVideoPlay(View view){

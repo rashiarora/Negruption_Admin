@@ -30,6 +30,20 @@
         <activity android:name=".StoryActivity" />
         <activity android:name=".ApproveStoryActivity" />
         <activity android:name=".ApproveStoryList"></activity>
+        <!-- [START firebase_service] -->
+        <service android:name="com.codeogic.negruption_admin.fcm.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_service] -->
+        <!-- [START firebase_iid_service] -->
+        <service android:name="com.codeogic.negruption_admin.fcm.MyFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!-- [END firebase_iid_service] -->
     </application>
 
 </manifest>
