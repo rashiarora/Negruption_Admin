@@ -103,7 +103,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         uname=(EditText)findViewById(R.id.loginUsername);
         password=(EditText)findViewById(R.id.loginPassword);
         login=(Button)findViewById(R.id.btnLogin);
-        register=(Button)findViewById(R.id.btnRegister);
 
     }
 
@@ -196,12 +195,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
 
-        else if (id==R.id.btnRegister){
-
-            Intent i =new Intent(LoginActivity.this,RegisterActivity.class);
-            startActivity(i);
-            finish();
-        }
 
     }
     private void requestPermission() {

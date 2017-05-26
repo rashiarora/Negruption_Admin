@@ -63,12 +63,12 @@ public class ApproveStoryActivity extends AppCompatActivity  {
     @InjectView(R.id.btnsStop_approve)
     Button btnStop;
 
-    @InjectView(R.id.sVideoView_approve)
+   /* @InjectView(R.id.sVideoView_approve)
     VideoView videoView;
 
     @InjectView(R.id.btnVideoPlay_approve)
     ImageButton videoPlay;
-
+*/
     @InjectView(R.id.btnAccept)
             Button btnAccept;
 
@@ -133,7 +133,7 @@ public class ApproveStoryActivity extends AppCompatActivity  {
 
         }
 
-        if (!(story.getVideoProof().equals("null"))){
+       /* if (!(story.getVideoProof().equals("null"))){
             videoView.setVisibility(View.VISIBLE);
             videoPlay.setVisibility(View.VISIBLE);
             videoView.setMediaController(new MediaController(this));
@@ -142,26 +142,35 @@ public class ApproveStoryActivity extends AppCompatActivity  {
             progressDialog.dismiss();
 
         }
-
+*/
         if (story.getCategory().equals("Honest")){
+            progressDialog.dismiss();
             imageView.setVisibility(View.GONE);
             btnPlay.setVisibility(View.GONE);
             btnPause.setVisibility(View.GONE);
             btnStop.setVisibility(View.GONE);
-            videoView.setVisibility(View.GONE);
-            videoPlay.setVisibility(View.GONE);
+           /* videoView.setVisibility(View.GONE);
+            videoPlay.setVisibility(View.GONE);*/
 
+        }
+
+        if (story.getImageProof().equals("null")&&story.getAudioProof().equals("null")){
             progressDialog.dismiss();
+            imageView.setVisibility(View.GONE);
+            btnPlay.setVisibility(View.GONE);
+            btnPause.setVisibility(View.GONE);
+            btnStop.setVisibility(View.GONE);
+
         }
 
     }
 
-    public void btnVideoPlay(View view){
+   /* public void btnVideoPlay(View view){
         videoView.start();
         videoPlay.setVisibility(View.GONE);
 
     }
-
+*/
 
     public void clickPlay(View view){
         mediaPlayer.start();
@@ -186,10 +195,10 @@ public class ApproveStoryActivity extends AppCompatActivity  {
             mediaPlayer = null;
         }
 
-        if (videoView!=null){
+      /*  if (videoView!=null){
             videoView.stopPlayback();
             videoView = null;
-        }
+        }*/
     }
 
     public void clickAccept(View view){

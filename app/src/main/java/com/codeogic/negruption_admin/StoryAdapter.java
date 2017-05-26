@@ -68,7 +68,7 @@ public class StoryAdapter extends ArrayAdapter<StoryBean> {
         txtTitle.setText(story.getStoryTitle());
         txtDescription.setText(story.getStoryDesc());
         txtViews.setText(String.valueOf(story.getViews()));
-        txtReadMore.setOnClickListener(new View.OnClickListener() {
+       /* txtReadMore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(v.getId() == R.id.textViewReadMore){
@@ -79,7 +79,7 @@ public class StoryAdapter extends ArrayAdapter<StoryBean> {
                     context.startActivity(intent);
                 }
             }
-        });
+        });*/
         return view;
     }
 

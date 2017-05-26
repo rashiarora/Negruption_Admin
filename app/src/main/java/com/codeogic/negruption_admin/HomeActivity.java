@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -35,7 +36,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemClickListener {
+        implements NavigationView.OnNavigationItemSelectedListener,AdapterView.OnItemClickListener,SwipeRefreshLayout.OnRefreshListener {
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -46,6 +47,7 @@ public class HomeActivity extends AppCompatActivity
     StoryBean storyBean;
     RequestQueue requestQueue;
     ProgressDialog progressDialog;
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +56,7 @@ public class HomeActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -74,15 +69,27 @@ public class HomeActivity extends AppCompatActivity
         sharedPreferences=getSharedPreferences(Util.PREFS_NAME,MODE_PRIVATE);
         editor= sharedPreferences.edit();
         listStories = (ListView)findViewById(R.id.listStories);
+        requestQueue = Volley.newRequestQueue(this);
+        swipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.swipeRefresh);
+
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+               retrieveStory();
+            }
+        });
+
+        retrieveStory();
 
         String username=sharedPreferences.getString(Util.PREFS_KEYUSERNAME,"");
         //title.setText("Welcome Home "+username);
-        progressDialog = new ProgressDialog(this);
+       /* progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait...");
         progressDialog.setCancelable(false);
+*/
 
-        requestQueue = Volley.newRequestQueue(this);
-        retrieveStory();
     }
 
     @Override
@@ -140,7 +147,7 @@ public class HomeActivity extends AppCompatActivity
         return true;
     }
     void retrieveStory(){
-        progressDialog.show();
+      //  progressDialog.show();
         stories = new ArrayList<>();
 
         StringRequest request = new StringRequest(Request.Method.GET, Util.RETRIEVE_STORY, new Response.Listener<String>() {
@@ -185,11 +192,13 @@ public class HomeActivity extends AppCompatActivity
 
                     listStories.setAdapter(adapter);
                     listStories.setOnItemClickListener(HomeActivity.this);
-                    progressDialog.dismiss();
+                  //  progressDialog.dismiss();
+                    swipeRefreshLayout.setRefreshing(false);
 
                 }catch (Exception e){
                     e.printStackTrace();
-                    progressDialog.dismiss();
+                  //  progressDialog.dismiss();
+                    swipeRefreshLayout.setRefreshing(false);
                     Toast.makeText(HomeActivity.this,"Some Exception"+ e,Toast.LENGTH_LONG).show();
                 }
 
@@ -199,7 +208,8 @@ public class HomeActivity extends AppCompatActivity
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+               // progressDialog.dismiss();
+                swipeRefreshLayout.setRefreshing(false);
                 Toast.makeText(HomeActivity.this,"Some Error"+error,Toast.LENGTH_LONG).show();
 
             }
@@ -214,6 +224,14 @@ public class HomeActivity extends AppCompatActivity
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         storyBean = stories.get(position);
         Toast.makeText(HomeActivity.this,"You Clicked"+storyBean.getUsername(),Toast.LENGTH_LONG).show();
-        Log.i("HomeActivity","homeActivity");
+       // Log.i("HomeActivity","homeActivity");
+        Intent intent = new Intent(HomeActivity.this,StoryActivity.class);
+        intent.putExtra("keyStory",storyBean);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onRefresh() {
+       retrieveStory();
     }
 }

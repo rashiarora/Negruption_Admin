@@ -1,6 +1,8 @@
 package com.codeogic.negruption_admin;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,23 +30,46 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
     ApproveAdapter adapter;
     StoryBean storyBean;
     RequestQueue requestQueue;
-    ProgressDialog progressDialog;
+   // ProgressDialog progressDialog;
+
+    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_approve_story_list);
         approveStories = (ListView)findViewById(R.id.approveListView);
-        progressDialog = new ProgressDialog(this);
+       /* progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please Wait...");
-        progressDialog.setCancelable(false);
+        progressDialog.setCancelable(false);*/
 
         requestQueue = Volley.newRequestQueue(this);
+
+       swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.approveSwipeRefresh);
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                retrieveStories();
+            }
+        });
+
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+                retrieveStories();
+            }
+        });
+
         retrieveStories();
+
+
+
     }
 
     void retrieveStories(){
-        progressDialog.show();
+       // progressDialog.show();
         stories = new ArrayList<>();
 
         StringRequest request = new StringRequest(Request.Method.GET, Util.RETRIEVE_APPROVAL_STORY, new Response.Listener<String>() {
@@ -88,11 +113,13 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
 
                     approveStories.setAdapter(adapter);
                     approveStories.setOnItemClickListener(ApproveStoryList.this);
-                    progressDialog.dismiss();
+                   // progressDialog.dismiss();
+                    swipeRefreshLayout.setRefreshing(false);
 
                 }catch (Exception e){
                     e.printStackTrace();
-                    progressDialog.dismiss();
+                    //progressDialog.dismiss();
+                    swipeRefreshLayout.setRefreshing(false);
                     Toast.makeText(ApproveStoryList.this,"Some Exception"+ e,Toast.LENGTH_LONG).show();
                 }
 
@@ -101,7 +128,8 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
+                //progressDialog.dismiss();
+                swipeRefreshLayout.setRefreshing(false);
                 Toast.makeText(ApproveStoryList.this,"Some Error"+error,Toast.LENGTH_LONG).show();
             }
         });
@@ -117,5 +145,8 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         storyBean = stories.get(position);
         Toast.makeText(ApproveStoryList.this,"You clicked"+storyBean.getUsername(),Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(ApproveStoryList.this,ApproveStoryActivity.class);
+        intent.putExtra("keyApproveStory",storyBean);
+        startActivity(intent);
     }
 }

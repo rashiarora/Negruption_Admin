@@ -51,11 +51,11 @@ public class StoryActivity extends AppCompatActivity {
     @InjectView(R.id.btnsStop)
     Button btnStop;
 
-    @InjectView(R.id.sVideoView)
+   /* @InjectView(R.id.sVideoView)
     VideoView videoView;
 
     @InjectView(R.id.btnVideoPlay)
-    ImageButton videoPlay;
+    ImageButton videoPlay;*/
 
 
     MediaPlayer mediaPlayer;
@@ -110,8 +110,17 @@ public class StoryActivity extends AppCompatActivity {
             }
 
         }
+        if (story.getImageProof().equals("null")&&story.getAudioProof().equals("null")){
+            progressDialog.dismiss();
+            imageView.setVisibility(View.GONE);
+            btnPlay.setVisibility(View.GONE);
+            btnPause.setVisibility(View.GONE);
+            btnStop.setVisibility(View.GONE);
 
-        if (!(story.getVideoProof().equals("null"))){
+        }
+
+
+     /*   if (!(story.getVideoProof().equals("null"))){
             videoView.setVisibility(View.VISIBLE);
             videoPlay.setVisibility(View.VISIBLE);
             videoView.setMediaController(new MediaController(this));
@@ -119,26 +128,16 @@ public class StoryActivity extends AppCompatActivity {
             videoView.requestFocus();
             progressDialog.dismiss();
 
-        }
-
-        if (story.getCategory().equals("Honest")){
-            imageView.setVisibility(View.GONE);
-            btnPlay.setVisibility(View.GONE);
-            btnPause.setVisibility(View.GONE);
-            btnStop.setVisibility(View.GONE);
-            videoView.setVisibility(View.GONE);
-            videoPlay.setVisibility(View.GONE);
-
-            progressDialog.dismiss();
-        }
+        }*/
     }
 
-    public void btnVideoPlay(View view){
+
+   /* public void btnVideoPlay(View view){
         videoView.start();
         videoPlay.setVisibility(View.GONE);
 
     }
-
+*/
 
     public void clickPlay(View view){
         mediaPlayer.start();
@@ -163,9 +162,9 @@ public class StoryActivity extends AppCompatActivity {
             mediaPlayer = null;
         }
 
-        if (videoView!=null){
+        /*if (videoView!=null){
             videoView.stopPlayback();
             videoView = null;
-        }
+        }*/
     }
 }
