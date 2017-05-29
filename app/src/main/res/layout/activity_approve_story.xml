@@ -1,142 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:padding="10dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.codeogic.negruption_admin.ApproveStoryActivity">
+    android:layout_height="match_parent">
+
+
 
     <LinearLayout
-        android:layout_width="368dp"
-        android:layout_height="495dp"
+        android:layout_width="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="UserName"
-            android:id="@+id/textViewsName_approve"
-            android:layout_marginTop="20dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewsStoryTitle_approve"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="StoryTitle"
-            android:layout_marginTop="20dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewsDepartment_approve"
-            android:text="Department"
-            android:layout_marginTop="20dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textViewsPlace_approve"
-            android:text="Place"
-            android:layout_marginTop="20dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="StoryDesc"
-            android:id="@+id/textViewsStoryDesc_approve"
-            android:layout_marginTop="20dp"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:id="@+id/sImageView_approve"
-            android:layout_gravity="center_horizontal"
-            android:visibility="gone"
-            />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <Button
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnsPlay_approve"
-                android:onClick="clickPlay"
-                android:text="Play"
-                android:layout_marginLeft="10dp"
-                android:visibility="gone"
+                android:text="Story Title"
+                android:id="@+id/textViewsStoryTitle_approve"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/black"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
                 />
-
-            <Button
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnsPause_approve"
-                android:onClick="clickPause"
-                android:text="Pause"
-                android:layout_marginLeft="20dp"
-                android:visibility="gone"
-                />
+                android:text="UserName"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="22dp"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-smallcaps"
+                android:id="@+id/textViewsName_approve"
+                android:layout_marginTop="10dp"/>
 
-            <Button
-                android:id="@+id/btnsStop_approve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Stop"
-                android:onClick="clickStop"
-                android:layout_marginLeft="20dp"
-                android:visibility="gone"
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorPrimaryDark"
                 />
 
         </LinearLayout>
 
-        <VideoView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/sVideoView_approve"
-            android:layout_marginTop="30dp"
-            android:visibility="gone"/>
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnVideoPlay_approve"
-            android:background="@drawable/video_player"
-            android:onClick="btnVideoPlay"
-            android:visibility="gone"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteY="8dp"
-            tools:layout_editor_absoluteX="8dp">
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/btnAccept"
-                android:onClick="clickAccept"
-                android:text="Accept" />
+            android:orientation="vertical">
 
-            <Button
-                android:layout_width="wrap_content"
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnReject"
-                android:onClick="clickReject"
-                android:text="Reject"/>
+                android:layout_marginTop="15dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewsDepartment_approve"
+                    android:text="Department"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textViewsPlace_approve"
+                    android:text="Place"
+                    android:textSize="18dp"
+
+                    android:textColor="@color/colorAccent"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginLeft="20dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="StoryDesc"
+                    android:id="@+id/textViewsStoryDesc_approve"
+                    android:layout_marginTop="90dp"
+                    android:textColor="@color/gray"
+                    android:fontFamily="serif"
+                    android:textSize="20dp"
+                    android:padding="10dp"
+
+
+                    />
+            </android.support.v7.widget.CardView>
 
         </LinearLayout>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_height="280dp"
+                android:layout_marginTop="20dp"
+                android:id="@+id/sImageView_approve"
+                android:visibility="gone"
+                android:src="@drawable/imageupload"
+                android:layout_gravity="center_horizontal"
+
+
+                />
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="70dp">
+
+                <Button
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnsPlay_approve"
+                    android:onClick="clickPlay"
+                    android:text="Play"
+                    android:visibility="gone"
+                    android:background="@color/colorPrimary"
+                    android:textColor="#ffffff"
+                    android:textSize="15dp"
+                    android:layout_marginLeft="15dp"
+                    />
+
+                <Button
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnsPause_approve"
+                    android:onClick="clickPause"
+                    android:text="Pause"
+                    android:textSize="15dp"
+                    android:visibility="gone"
+                    android:background="@color/colorPrimary"
+                    android:textColor="#ffffff"
+                    android:layout_marginLeft="25dp"
+                    />
+
+                <Button
+                    android:id="@+id/btnsStop_approve"
+                    android:layout_width="90dp"
+                    android:background="@color/colorPrimary"
+                    android:textSize="15dp"
+                    android:visibility="gone"
+                    android:textColor="#ffffff"
+                    android:layout_height="wrap_content"
+                    android:text="Stop"
+                    android:onClick="clickStop"
+                    android:layout_marginLeft="25dp"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="140dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+             >
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnAccept"
+                    android:onClick="clickAccept"
+                    android:text="Accept the Story"
+                    android:textColor="@color/lightgray"
+                    android:background="@color/colorPrimaryDark"/>
+
+                <Button
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnReject"
+                    android:onClick="clickReject"
+                    android:text="Reject The Story"
+                    android:textColor="@color/lightgray"
+                    android:background="@color/colorPrimaryDark"
+                    />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+
+
+
+
 
 
     </LinearLayout>
 
 
 
+
 </ScrollView>
+
+
+
+
+
+

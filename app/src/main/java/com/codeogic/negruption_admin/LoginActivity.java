@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
 
         login.setOnClickListener(this);
-        register.setOnClickListener(this);
+
         admin= new Admin();
 
 

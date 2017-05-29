@@ -5,58 +5,94 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/loginback2"
     tools:context="com.codeogic.negruption_admin.LoginActivity">
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="20dp"
-        android:src="@drawable/loginlogo1"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_gravity="center"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Challenge The Corruption"
         android:layout_marginTop="10dp"
-        android:textColor="@color/colorPrimaryDark"
-        android:fontFamily="monospace"
-        android:layout_gravity="center"        />
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/loginback2"
+        >
 
 
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="  Username"
-        android:background="@android:drawable/dialog_holo_light_frame"
-        android:inputType="textPersonName"
-        android:id="@+id/loginUsername"
-        android:layout_marginTop="40dp"
-        />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint=" Password"
-        android:background="@android:drawable/dialog_holo_light_frame"
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="22dp"
+            android:background="@drawable/loginlogo2"
+            />
 
-        android:inputType="textPassword"
-        android:id="@+id/loginPassword"
-        android:layout_marginTop="20dp"
-        />
-
-
-
-    <Button
-        android:id="@+id/btnLogin"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-
-        android:layout_marginTop="55dp"
-        android:text="Login" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Challenge The Corruption"
+            android:textColor="@color/lightgray"
+            android:fontFamily="serif"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginTop="1dp"
+            android:layout_gravity="center" />
 
 
+
+
+        <EditText
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:hint="Username"
+            android:textSize="20dp"
+            android:textColor="@color/lightgray"
+            android:layout_gravity="center"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:backgroundTint="@color/lightgray"
+            android:textColorHint="@color/lightgray"
+            android:inputType="textPersonName"
+            android:id="@+id/loginUsername"
+            android:layout_marginTop="40dp"
+            />
+
+        <EditText
+            android:layout_width="340dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:hint="Password"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:textStyle="bold"
+            android:textColor="@color/lightgray"
+            android:textColorHint="@color/lightgray"
+            android:backgroundTint="@color/lightgray"
+            android:inputType="textPassword"
+            android:id="@+id/loginPassword"
+            android:layout_marginTop="20dp"
+            />
+
+
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:background="#ffffff"
+            android:layout_marginTop="60dp"
+            android:text="L o g i n" />
+
+
+
+
+
+
+    </LinearLayout>
 </LinearLayout>

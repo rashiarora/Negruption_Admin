@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -89,6 +90,8 @@ public class ApproveStoryActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_approve_story);
         ButterKnife.inject(this);
 
+
+
         Intent rcv = getIntent();
         story = (StoryBean)rcv.getSerializableExtra("keyApproveStory");
 
@@ -164,6 +167,8 @@ public class ApproveStoryActivity extends AppCompatActivity  {
         }
 
     }
+
+
 
    /* public void btnVideoPlay(View view){
         videoView.start();
