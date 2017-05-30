@@ -90,7 +90,7 @@ public class StoryActivity extends AppCompatActivity {
 
 
         Log.i("info",story.toString());
-        Toast.makeText(this,story.getImageProof() + story.getAudioProof() + story.getVideoProof(),Toast.LENGTH_LONG).show();
+  //      Toast.makeText(this,story.getImageProof() + story.getAudioProof() + story.getVideoProof(),Toast.LENGTH_LONG).show();
 
 
         if (!story.getImageProof().equals("null")){

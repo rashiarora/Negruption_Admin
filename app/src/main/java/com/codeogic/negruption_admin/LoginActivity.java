@@ -162,7 +162,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                             LoginActivity.this.startActivity(new Intent(Settings.ACTION_SETTINGS));
 
-                            Toast.makeText(LoginActivity.this,"Clicked Okay",Toast.LENGTH_LONG).show();
+                          //  Toast.makeText(LoginActivity.this,"Clicked Okay",Toast.LENGTH_LONG).show();
 
 
                         }
@@ -228,7 +228,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             public void onClick(DialogInterface dialog, int which) {
 
                                 requestPermission();
-                                Toast.makeText(LoginActivity.this,"Clicked Okay",Toast.LENGTH_LONG).show();
+                      //          Toast.makeText(LoginActivity.this,"Clicked Okay",Toast.LENGTH_LONG).show();
 
 
                             }
@@ -273,7 +273,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         editor.putString(Util.PREFS_KEYUSERNAME,admin.getUsername());
                         editor.putString(Util.PREFS_KEYPASSWORD,admin.getPassword());
                         editor.commit();
-                        Toast.makeText(LoginActivity.this,message,Toast.LENGTH_LONG).show();
+                   //     Toast.makeText(LoginActivity.this,message,Toast.LENGTH_LONG).show();
                         Intent i = new Intent(LoginActivity.this,HomeActivity.class);
                         startActivity(i);
                         finish();
@@ -284,14 +284,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
 
                 progressDialog.dismiss();
-                Toast.makeText(LoginActivity.this,"Response: "+response,Toast.LENGTH_LONG).show();
+             //   Toast.makeText(LoginActivity.this,"Response: "+response,Toast.LENGTH_LONG).show();
             }
 
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(LoginActivity.this,"Some Error"+error,Toast.LENGTH_LONG).show();
+              //  Toast.makeText(LoginActivity.this,"Some Error"+error,Toast.LENGTH_LONG).show();
 
             }
         })

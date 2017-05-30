@@ -135,7 +135,7 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
                     e.printStackTrace();
                     //progressDialog.dismiss();
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(ApproveStoryList.this,"Some Exception"+ e,Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(ApproveStoryList.this,"Some Exception"+ e,Toast.LENGTH_LONG).show();
                 }
 
 
@@ -145,7 +145,7 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
             public void onErrorResponse(VolleyError error) {
                 //progressDialog.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(ApproveStoryList.this,"Some Error"+error,Toast.LENGTH_LONG).show();
+              //  Toast.makeText(ApproveStoryList.this,"Some Error"+error,Toast.LENGTH_LONG).show();
             }
         });
         request.setRetryPolicy(new DefaultRetryPolicy(50000,
@@ -159,7 +159,7 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         storyBean = stories.get(position);
-        Toast.makeText(ApproveStoryList.this,"You clicked"+storyBean.getUsername(),Toast.LENGTH_LONG).show();
+       // Toast.makeText(ApproveStoryList.this,"You clicked"+storyBean.getUsername(),Toast.LENGTH_LONG).show();
         Intent intent = new Intent(ApproveStoryList.this,ApproveStoryActivity.class);
         intent.putExtra("keyApproveStory",storyBean);
         startActivity(intent);

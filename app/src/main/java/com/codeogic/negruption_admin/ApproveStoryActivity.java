@@ -227,20 +227,20 @@ public class ApproveStoryActivity extends AppCompatActivity  {
 
                     if(success == 1){
 
-                        Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
+                     //   Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
                         Intent i = new Intent(ApproveStoryActivity.this,ApproveStoryList.class);
                         startActivity(i);
                          finish();
 
                     }else{
-                         Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
+                        // Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
                     }
                      progressDialog.dismiss();
                 }catch (Exception e){
                     e.printStackTrace();
 
                     progressDialog.dismiss();
-                    Toast.makeText(ApproveStoryActivity.this,"Some Exception"+e,Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(ApproveStoryActivity.this,"Some Exception"+e,Toast.LENGTH_LONG).show();
                 }
 
 
@@ -249,7 +249,7 @@ public class ApproveStoryActivity extends AppCompatActivity  {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(ApproveStoryActivity.this,"Volley Error"+error.getMessage(),Toast.LENGTH_LONG).show();
+             //   Toast.makeText(ApproveStoryActivity.this,"Volley Error"+error.getMessage(),Toast.LENGTH_LONG).show();
 
             }
         })
@@ -285,20 +285,20 @@ public class ApproveStoryActivity extends AppCompatActivity  {
 
                     if(success == 1){
 
-                        Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
+                   //     Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
                        /* Intent i = new Intent(ApproveStoryActivity.this,ApproveStoryList.class);
                         startActivity(i);
                         finish();
 */
                     }else{
-                        Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
+                     //   Toast.makeText(ApproveStoryActivity.this,message,Toast.LENGTH_LONG).show();
                     }
                     progressDialog.dismiss();
                 }catch (Exception e){
                     e.printStackTrace();
 
                     progressDialog.dismiss();
-                    Toast.makeText(ApproveStoryActivity.this,"Some Exception"+e,Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ApproveStoryActivity.this,"Some Exception"+e,Toast.LENGTH_LONG).show();
                 }
 
 
@@ -307,7 +307,7 @@ public class ApproveStoryActivity extends AppCompatActivity  {
             @Override
             public void onErrorResponse(VolleyError error) {
                 progressDialog.dismiss();
-                Toast.makeText(ApproveStoryActivity.this,"Volley Error"+error.getMessage(),Toast.LENGTH_LONG).show();
+              //  Toast.makeText(ApproveStoryActivity.this,"Volley Error"+error.getMessage(),Toast.LENGTH_LONG).show();
 
             }
         })

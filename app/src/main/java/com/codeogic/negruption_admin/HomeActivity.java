@@ -178,7 +178,7 @@ public class HomeActivity extends AppCompatActivity
                     e.printStackTrace();
                   //  progressDialog.dismiss();
                     swipeRefreshLayout.setRefreshing(false);
-                    Toast.makeText(HomeActivity.this,"Some Exception"+ e,Toast.LENGTH_LONG).show();
+                  //  Toast.makeText(HomeActivity.this,"Some Exception"+ e,Toast.LENGTH_LONG).show();
                 }
 
 
@@ -189,7 +189,7 @@ public class HomeActivity extends AppCompatActivity
             public void onErrorResponse(VolleyError error) {
                // progressDialog.dismiss();
                 swipeRefreshLayout.setRefreshing(false);
-                Toast.makeText(HomeActivity.this,"Some Error"+error,Toast.LENGTH_LONG).show();
+               // Toast.makeText(HomeActivity.this,"Some Error"+error,Toast.LENGTH_LONG).show();
 
             }
         });
@@ -202,7 +202,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         storyBean = stories.get(position);
-        Toast.makeText(HomeActivity.this,"You Clicked"+storyBean.getUsername(),Toast.LENGTH_LONG).show();
+       // Toast.makeText(HomeActivity.this,"You Clicked"+storyBean.getUsername(),Toast.LENGTH_LONG).show();
        // Log.i("HomeActivity","homeActivity");
         Intent intent = new Intent(HomeActivity.this,StoryActivity.class);
         intent.putExtra("keyStory",storyBean);
