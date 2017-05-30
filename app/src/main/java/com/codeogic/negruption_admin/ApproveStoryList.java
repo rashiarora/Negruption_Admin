@@ -96,6 +96,7 @@ public class ApproveStoryList extends AppCompatActivity implements AdapterView.O
 
                     int  sid=0,views =0,status = 0;
                     String username="",title="",description="",privacy="",dep = " ",pl = " ",u = "", img = " ", aud = " ", vid = " ", cat = " ";
+                    stories.clear();
                     for(int i=0;i<jsonArray.length();i++) {
                         JSONObject jObj = jsonArray.getJSONObject(i);
 

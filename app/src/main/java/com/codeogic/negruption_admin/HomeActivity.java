@@ -140,6 +140,7 @@ public class HomeActivity extends AppCompatActivity
                     String username="",title="",description="",privacy="",dep = " ",pl = " ",u = "", img = " ", aud = " ", vid = " ", cat = " ";
 
 
+                    stories.clear();
                     for(int i=0;i<jsonArray.length();i++){
                         JSONObject jObj = jsonArray.getJSONObject(i);
 
